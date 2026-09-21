@@ -1,0 +1,91 @@
+@import "tailwindcss";
+
+@theme {
+  --font-display: "Space Grotesk", ui-sans-serif, system-ui, sans-serif;
+  --font-body: "Inter", ui-sans-serif, system-ui, sans-serif;
+
+  --color-ink: #0a0a0b;
+  --color-surface: #141416;
+  --color-surface-2: #1b1b1e;
+  --color-line: #2a2a2e;
+  --color-red: #c41e2a;
+  --color-red-dim: #7a1520;
+  --color-paper: #f5f4f2;
+  --color-paper-2: #eceae6;
+  --color-metal: #8a8d93;
+}
+
+:root[data-theme="dark"] {
+  --bg: #0a0a0b;
+  --bg-elevated: #141416;
+  --panel: #141416;
+  --panel-2: #1b1b1e;
+  --hairline: #2a2a2e;
+  --fg: #f5f4f2;
+  --fg-dim: #b9b8b6;
+  --nav-bg: color-mix(in srgb, #0a0a0b 65%, transparent);
+}
+
+:root[data-theme="light"] {
+  --bg: #f5f4f2;
+  --bg-elevated: #ffffff;
+  --panel: #ffffff;
+  --panel-2: #eceae6;
+  --hairline: #ddd9d3;
+  --fg: #0a0a0b;
+  --fg-dim: #55534f;
+  --nav-bg: color-mix(in srgb, #f5f4f2 70%, transparent);
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-body);
+  background-color: var(--bg);
+  color: var(--fg);
+  -webkit-font-smoothing: antialiased;
+  transition: background-color 0.5s ease, color 0.5s ease;
+}
+
+::selection {
+  background: var(--color-red);
+  color: white;
+}
+
+.font-display {
+  font-family: var(--font-display);
+}
+
+.tabular {
+  font-variant-numeric: tabular-nums;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+::-webkit-scrollbar { width: 8px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: var(--hairline); border-radius: 0; }
+
+:focus-visible {
+  outline: 2px solid var(--color-red);
+  outline-offset: 2px;
+}
+
+/* theme-adaptive utility classes — flip with [data-theme] above */
+.bg-app { background-color: var(--bg); }
+.text-fg { color: var(--fg); }
+.text-fg-dim { color: var(--fg-dim); }
+.bg-panel { background-color: var(--panel); }
+.bg-panel-2 { background-color: var(--panel-2); }
+.border-hair { border-color: var(--hairline); }
+.bg-elevated { background-color: var(--bg-elevated); }
+.bg-hair { background-color: var(--hairline); }
